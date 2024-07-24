@@ -30,9 +30,13 @@ public class Form implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @TableField("room_num")
+    private String roomNum;
+
     /**
      * 入住时间
      */
+
     @TableField("start_time")
     private LocalDateTime startTime;
 

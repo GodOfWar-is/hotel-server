@@ -29,6 +29,9 @@ public class JwtComponet {
     public String getUsername(String token){
         return JWT.decode(token).getClaim("username").asString();
     }
+    public String getPassword(String token){
+        return JWT.decode(token).getClaim("password").asString();
+    }
     //验证token
     public boolean verify(String token,String username,String password){
         Algorithm alg=Algorithm.HMAC256(username+password);

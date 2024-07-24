@@ -36,7 +36,7 @@ public class Client implements Serializable {
      * 客户身份证号码
      */
     @TableField("id_num")
-    private Integer idNum;
+    private String idNum;
 
     /**
      * 性别

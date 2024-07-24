@@ -1,6 +1,7 @@
 package com.swpu.hotelserver.config;
 
 import com.swpu.hotelserver.common.exception.UnAuthException;
+import com.swpu.hotelserver.emp.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
@@ -19,8 +20,10 @@ import java.util.Date;
 * 8自定义的INterceptor要注册WebMvcConfigure中才能生效*/
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
-@Autowired
-private JwtComponet jwtComponet;
+    @Autowired
+    private JwtComponet jwtComponet;
+    @Autowired
+    EmpService empService;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");
@@ -35,11 +38,12 @@ private JwtComponet jwtComponet;
         }
         //还可以
 //        * 1获取用户名，查询是否存在
-//        String username = jwtComponet.getUsername(token);
-//        if(!jwtComponet.verify(token,username,null)){
-//            //抛token不合法异常
-//            throw new UnAuthException("token不合法异常");
-//        }
+        String username = jwtComponet.getUsername(token);
+        String password=empService.getPasswordByusername(username);
+        if(!jwtComponet.verify(token,username,password)){
+            //抛token不合法异常
+            throw new UnAuthException("token不合法异常");
+        }
 //        * 2存在就根据用户名和密码验证token是否合法
 
 
