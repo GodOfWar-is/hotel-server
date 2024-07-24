@@ -24,9 +24,9 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         // String projectPath = System.getProperty("user.dir");
         // gc.setOutputDir(projectPath + "/src/main/java");
-        String projectPath = "E://Test//mybatisCode";///
+        String projectPath = "D://Test//mybatisCode";///
         gc.setOutputDir(projectPath);
-        gc.setAuthor("hotel");
+        gc.setAuthor("huchengbo");
         //设置完之后是否打开资源管理器
         gc.setOpen(false);
         gc.setSwagger2(false);
@@ -51,8 +51,8 @@ public class CodeGenerator {
         mpg.setDataSource(dsc);///
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("user");// 模块名///
-        pc.setParent("com.swpu.userserver");///
+        pc.setModuleName("room");// 模块名///
+        pc.setParent("com.swpu.hotelserver");///
         mpg.setPackageInfo(pc);
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
@@ -83,7 +83,7 @@ public class CodeGenerator {
         // strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");
         strategy.setRestControllerStyle(true);
         // strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
-        strategy.setInclude("client");/// 表名
+        strategy.setInclude("room");/// 表名
 
         // strategy.setSuperEntityColumns("id");
         // strategy.setControllerMappingHyphenStyle(true);
